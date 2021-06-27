@@ -12,7 +12,7 @@ Source0:        %{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
-BuildRequires:  python3dist(python-execnet) >= 1.1
+BuildRequires:  python3dist(execnet) >= 1.1
 BuildRequires:  python3dist(filelock)
 BuildRequires:  python3dist(psutil) >= 3
 BuildRequires:  python3dist(pytest) >= 6
