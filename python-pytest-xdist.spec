@@ -3,23 +3,25 @@
 
 Name:		python-pytest-xdist
 Version:	3.8.0
-Release:	2
+Release:	3
 Source0:	https://files.pythonhosted.org/packages/source/p/pytest-xdist/%{oname}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Summary:	pytest xdist plugin for distributed testing, most importantly across multiple CPUs
+Summary:	pytest plugin for distributed testing across CPUs
 URL:		https://pypi.org/project/pytest-xdist/
 License:	MIT
 Group:		Development/Python
 BuildSystem:	python
 BuildArch:	noarch
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python3)
 BuildRequires:	python%{pyver}dist(execnet) >= 1.1
 BuildRequires:	python%{pyver}dist(filelock)
 BuildRequires:	python%{pyver}dist(setproctitle)
 BuildRequires:	python%{pyver}dist(psutil) >= 3
 BuildRequires:	python%{pyver}dist(pytest) >= 6
 BuildRequires:	python%{pyver}dist(pytest-forked)
+BuildRequires:	python%{pyver}dist(pip)
 BuildRequires:	python%{pyver}dist(setuptools)
 BuildRequires:	python%{pyver}dist(setuptools-scm)
+BuildRequires:	python%{pyver}dist(wheel)
 Requires:		python%{pyver}dist(execnet) >= 2.1
 Requires:		python%{pyver}dist(pytest) >= 7.0.0
 Recommends:		python%{pyver}dist(psutil) >= 3.0
@@ -31,6 +33,9 @@ Recommends:		python%{pyver}dist(setproctitle)
 %patchlist
 https://github.com/pytest-dev/pytest-xdist/pull/1266/commits/46084729fd2785c626d8c4add0b5e695eb4fdde9.patch#/%{name}-3.8.0-update-biapp.patch
 https://github.com/pytest-dev/pytest-xdist/pull/1272.patch#/%{name}-3.8.0-fix-for-pytest-9.0+.patch
+
+%build -p
+export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
 
 %description
 The pytest-xdist plugin extends pytest with new test execution
